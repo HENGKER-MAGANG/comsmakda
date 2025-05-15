@@ -1,8 +1,8 @@
 <?php
-$host = getenv("DB_HOST") ?: "mysql-com";
-$user = getenv("DB_USER") ?: "mysql";
-$pass = getenv("DB_PASS") ?: "comsmakda";
-$dbname = getenv("DB_NAME") ?: "multi-role";
+$host = "e0k4s0wgocc00s0gs8c8oc80";
+$user = "mysql";
+$pass = "comsmakda";
+$dbname = "multi-role";
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
