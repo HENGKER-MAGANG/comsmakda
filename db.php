@@ -4,7 +4,8 @@ $user = 'comsmkda';
 $password = 'comsmakda';
 $database = 'multi-role';
 
-$conn = mysqli_connect($host, $user, $password, $database);
+$mysqli = new mysqli('host', 'comsmkda', 'comsmakda', 'multi-role', 3306, '/var/run/mysqld/mysqld.sock');
+
 
 if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
