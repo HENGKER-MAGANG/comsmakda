@@ -4,7 +4,8 @@ $user = 'comsmkda';
 $password = 'comsmakda';
 $database = 'multi-role';
 
-$mysqli = new mysqli('host', 'comsmkda', 'comsmakda', 'multi-role', 3306, '/var/run/mysqld/mysqld.sock');
+$mysqli = new mysqli('localhost', 'comsmkda', 'comsmakda', 'multi-role');
+
 
 
 if (!$conn) {
