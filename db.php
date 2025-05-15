@@ -1,12 +1,20 @@
 <?php
 $host = 'e0k4s0wgocc00s0gs8c8oc80';
+$db   = 'multi-role';
 $user = 'comsmkda';
-$password = 'comsmakda';
-$database = 'multi-role';
+$pass = 'comsmakda';
+$charset = 'utf8mb4';
 
-$conn = new mysqli($host, $user, $password, $database);
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
-if ($conn->connect_error) {
-    die("Koneksi ke database gagal: " . $conn->connect_error);
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+];
+
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    die('Koneksi gagal: ' . $e->getMessage());
 }
 ?>
