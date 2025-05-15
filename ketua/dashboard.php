@@ -1,5 +1,4 @@
 <?php
-session_start();
 require '../db.php';
 require '../auth.php';
 cekRole(['ketua']);
@@ -32,14 +31,22 @@ $jumlahTunggakan = mysqli_num_rows($queryTunggakan);
 
 <div class="container py-4">
   <h2 class="mb-4">Selamat Datang, Ketua!</h2>
-  <p>Berikut adalah ringkasan data:</p>
+  <p class="text-muted">Berikut adalah ringkasan data organisasi hari ini:</p>
 
-  <!-- Baris pertama -->
+  <!-- Tombol aksi cepat -->
+  <div class="mb-3">
+    <a href="absensi.php" class="btn btn-outline-primary btn-sm">📋 Lihat Absensi</a>
+    <a href="kas.php" class="btn btn-outline-success btn-sm">💰 Kelola Kas</a>
+    <a href="anggota.php" class="btn btn-outline-info btn-sm">👥 Data Anggota</a>
+    <a href="laporan.php" class="btn btn-outline-dark btn-sm">📑 Laporan</a>
+  </div>
+
+  <!-- Ringkasan Statistik -->
   <div class="row g-3">
     <div class="col-md-3">
       <div class="card shadow-sm border-start border-info border-5">
         <div class="card-body">
-          <h5 class="card-title">Jumlah Anggota</h5>
+          <h6 class="card-title">Jumlah Anggota</h6>
           <p class="card-text fs-4"><?= $jumlahAnggota ?></p>
         </div>
       </div>
@@ -47,7 +54,7 @@ $jumlahTunggakan = mysqli_num_rows($queryTunggakan);
     <div class="col-md-3">
       <div class="card shadow-sm border-start border-success border-5">
         <div class="card-body">
-          <h5 class="card-title">Jumlah Hadir</h5>
+          <h6 class="card-title">Jumlah Hadir</h6>
           <p class="card-text fs-4"><?= $jumlahHadir ?></p>
         </div>
       </div>
@@ -55,7 +62,7 @@ $jumlahTunggakan = mysqli_num_rows($queryTunggakan);
     <div class="col-md-3">
       <div class="card shadow-sm border-start border-primary border-5">
         <div class="card-body">
-          <h5 class="card-title">Izin</h5>
+          <h6 class="card-title">Izin</h6>
           <p class="card-text fs-4"><?= $jumlahIzin ?></p>
         </div>
       </div>
@@ -63,19 +70,19 @@ $jumlahTunggakan = mysqli_num_rows($queryTunggakan);
     <div class="col-md-3">
       <div class="card shadow-sm border-start border-danger border-5">
         <div class="card-body">
-          <h5 class="card-title">Alpa</h5>
+          <h6 class="card-title">Alpa</h6>
           <p class="card-text fs-4"><?= $jumlahAlpa ?></p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Baris kedua -->
+  <!-- Ringkasan Keuangan -->
   <div class="row g-3 mt-1">
     <div class="col-md-3">
       <div class="card shadow-sm border-start border-warning border-5">
         <div class="card-body">
-          <h5 class="card-title">Saldo Kas</h5>
+          <h6 class="card-title">Saldo Kas</h6>
           <p class="card-text fs-4">Rp<?= number_format($saldoKas, 0, ',', '.') ?></p>
         </div>
       </div>
@@ -83,7 +90,7 @@ $jumlahTunggakan = mysqli_num_rows($queryTunggakan);
     <div class="col-md-3">
       <div class="card shadow-sm border-start border-dark border-5">
         <div class="card-body">
-          <h5 class="card-title">Tunggakan Kas</h5>
+          <h6 class="card-title">Tunggakan Kas</h6>
           <p class="card-text fs-4"><?= $jumlahTunggakan ?> anggota</p>
           <a href="tunggakan.php" class="btn btn-outline-dark btn-sm mt-2">Lihat Tunggakan</a>
         </div>
@@ -91,6 +98,5 @@ $jumlahTunggakan = mysqli_num_rows($queryTunggakan);
     </div>
   </div>
 </div>
-
 
 <?php include 'partials/footer.php'; ?>

@@ -1,13 +1,16 @@
 <?php
-$host = 'e0k4s0wgocc00s0gs8c8oc80'; // host dari Coolify
-$dbname = 'multi-role';
-$username = 'comsmkda';
-$password = 'comsmkda';
+$host = "localhost"; // Host untuk server lokal
+$user = "root"; // Username default untuk MySQL di lokal
+$pass = ""; // Password default untuk MySQL di lokal (biasanya kosong)
+$dbname = "multi-role"; // Nama database yang ingin Anda gunakan
 
-try {
-    $pdo = new PDO("mysql:host=$host;port=3306;dbname=$dbname;charset=utf8mb4", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Koneksi database gagal: " . $e->getMessage());
+// Membuat koneksi
+$conn = new mysqli($host, $user, $pass, $dbname);
+
+// Memeriksa koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
 }
+
+echo "Koneksi berhasil!";
 ?>
