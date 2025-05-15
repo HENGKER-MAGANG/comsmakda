@@ -1,16 +1,12 @@
 <?php
-$host = 'e0k4s0wgocc00s0gs8c8oc80';
+$host = 'mysql-com'; // contoh: mysql.coolify.myapp.com atau IP seperti 172.20.0.3
 $user = 'comsmkda';
 $password = 'comsmakda';
-$database = 'multi-role';
+$dbname = 'multi-role';
 
-$mysqli = new mysqli('localhost', 'comsmkda', 'comsmakda', 'multi-role');
+$conn = new mysqli($host, $user, $password, $dbname);
 
-
-
-if (!$conn) {
-    die("Koneksi gagal: " . mysqli_connect_error());
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
 }
 ?>
-
-
